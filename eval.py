@@ -1072,7 +1072,7 @@ def print_maps(all_maps):
     print()
 
 
-def inference_images():
+def init_net():
     parse_args()
 
     if args.config is not None:
@@ -1112,13 +1112,6 @@ def inference_images():
             calc_map(ap_data)
             exit()
 
-        if args.image is None and args.video is None and args.images is None:
-            dataset = COCODetection(cfg.dataset.valid_images, cfg.dataset.valid_info,
-                                    transform=BaseTransform(), has_gt=cfg.dataset.has_gt)
-            prep_coco_cats()
-        else:
-            dataset = None
-
         print('Loading model...', end='')
         net = Yolact()
         net.load_weights(args.trained_model)
@@ -1132,13 +1125,10 @@ def inference_images():
         net.detect.use_cross_class_nms = args.cross_class_nms
         cfg.mask_proto_debug = args.mask_proto_debug
 
-        inp, out = args.images.split(':')
-        predictions = evalimages(net, inp, out)
-
-        return predictions
+        return net
 
 
-def main():
+if __name__ == '__main__':
     parse_args()
 
     if args.config is not None:
@@ -1195,7 +1185,3 @@ def main():
             net = net.cuda()
 
         evaluate(net, dataset)
-
-
-if __name__ == '__main__':
-    main()
