@@ -131,6 +131,8 @@ def parse_args(argv=None):
     if args.seed is not None:
         random.seed(args.seed)
 
+    return args
+
 
 iou_thresholds = [x / 100 for x in range(50, 100, 5)]
 coco_cats = {}  # Call prep_coco_cats to fill this
@@ -1073,7 +1075,7 @@ def print_maps(all_maps):
 
 
 def init_net():
-    parse_args()
+    args = parse_args()
 
     if args.config is not None:
         set_cfg(args.config)
@@ -1125,7 +1127,7 @@ def init_net():
         net.detect.use_cross_class_nms = args.cross_class_nms
         cfg.mask_proto_debug = args.mask_proto_debug
 
-        return net
+        return net, args
 
 
 if __name__ == '__main__':
