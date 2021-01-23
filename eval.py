@@ -1,14 +1,14 @@
-from data import COCODetection, get_label_map, MEANS, COLORS
-from yolact import Yolact
-from utils.augmentations import BaseTransform, FastBaseTransform, Resize
-from utils.functions import MovingAverage, ProgressBar
-from layers.box_utils import jaccard, center_size, mask_iou
-from utils import timer
-from utils.functions import SavePath
-from layers.output_utils import postprocess, undo_image_transformation
+from yolact.data import COCODetection, get_label_map, MEANS, COLORS
+from yolact.yolact import Yolact
+from yolact.utils.augmentations import BaseTransform, FastBaseTransform, Resize
+from yolact.utils.functions import MovingAverage, ProgressBar
+from yolact.layers.box_utils import jaccard, center_size, mask_iou
+from yolact.utils import timer
+from yolact.utils.functions import SavePath
+from yolact.layers.output_utils import postprocess, undo_image_transformation
 import pycocotools
 
-from data import cfg, set_cfg, set_dataset
+from yolact.data import cfg, set_cfg, set_dataset
 
 import numpy as np
 import torch
@@ -1045,8 +1045,7 @@ def print_maps(all_maps):
     print()
 
 
-
-if __name__ == '__main__':
+def main():
     parse_args()
 
     if args.config is not None:
@@ -1091,7 +1090,7 @@ if __name__ == '__main__':
                                     transform=BaseTransform(), has_gt=cfg.dataset.has_gt)
             prep_coco_cats()
         else:
-            dataset = None        
+            dataset = None
 
         print('Loading model...', end='')
         net = Yolact()
@@ -1103,5 +1102,9 @@ if __name__ == '__main__':
             net = net.cuda()
 
         evaluate(net, dataset)
+
+if __name__ == '__main__':
+    main()
+
 
 
