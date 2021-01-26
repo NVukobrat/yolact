@@ -159,22 +159,29 @@ PASCAL_CLASSES = ("aeroplane", "bicycle", "bird", "boat", "bottle",
                   "bus", "car", "cat", "chair", "cow", "diningtable",
                   "dog", "horse", "motorbike", "person", "pottedplant",
                   "sheep", "sofa", "train", "tvmonitor")
-
 pascal_sbd_dataset = dataset_base.copy({
     'name': 'Pascal SBD 2012',
 
     'train_images': './data/sbd/img',
     'valid_images': './data/sbd/img',
-    
     'train_info': './data/sbd/pascal_sbd_train.json',
     'valid_info': './data/sbd/pascal_sbd_val.json',
 
     'class_names': PASCAL_CLASSES,
 })
 
+vehicle_dataset = dataset_base.copy({
+    'name': 'Vehicle dataset',
 
+    'train_images': '../output/images/training/',
+    'train_info': '../output/annotations/training.json',
 
+    'valid_images': '../output/images/evaluation/',
+    'valid_info': '../output/annotations/evaluation.json',
 
+    'class_names': ('vehicle'),
+    'label_map': { 15: 1 }
+})
 
 # ----------------------- TRANSFORMS ----------------------- #
 
@@ -805,6 +812,12 @@ yolact_plus_resnet50_config = yolact_plus_base_config.copy({
     }),
 })
 
+yolact_plus_vehicle_config = yolact_plus_base_config.copy({
+    'name': 'yolact_plus_vehicle_config',
+
+    'dataset': vehicle_dataset,
+    'num_classes': len(vehicle_dataset.class_names) + 1
+})
 
 # Default config
 cfg = yolact_base_config.copy()
