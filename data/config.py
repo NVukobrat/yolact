@@ -180,7 +180,7 @@ vehicle_dataset = dataset_base.copy({
     'valid_info': '../output/annotations/evaluation.json',
 
     'class_names': ('vehicle'),
-    'label_map': { 15: 1 }
+    'label_map': { 1: 1 }
 })
 
 # ----------------------- TRANSFORMS ----------------------- #
@@ -816,7 +816,7 @@ yolact_plus_vehicle_config = yolact_plus_base_config.copy({
     'name': 'yolact_plus_vehicle_config',
 
     'dataset': vehicle_dataset,
-    'num_classes': len(vehicle_dataset.class_names) + 1
+    'num_classes': len(vehicle_dataset.class_names) + 1  # Must be at least 2 as background also counts
 })
 
 # Default config
