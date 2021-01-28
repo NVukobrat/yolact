@@ -173,11 +173,11 @@ pascal_sbd_dataset = dataset_base.copy({
 vehicle_dataset = dataset_base.copy({
     'name': 'Vehicle dataset',
 
-    'train_images': '../output/images/training/',
-    'train_info': '../output/annotations/training.json',
+    'train_images': '/home/nvukobrat/PycharmProjects/Carswip/YolactModelTraining/output/images/training/',
+    'train_info': '/home/nvukobrat/PycharmProjects/Carswip/YolactModelTraining/output/annotations/training.json',
 
-    'valid_images': '../output/images/evaluation/',
-    'valid_info': '../output/annotations/evaluation.json',
+    'valid_images': '/home/nvukobrat/PycharmProjects/Carswip/YolactModelTraining/output/images/evaluation/',
+    'valid_info': '/home/nvukobrat/PycharmProjects/Carswip/YolactModelTraining/output/annotations/evaluation.json',
 
     'class_names': ('vehicle'),
     'label_map': { 1: 1 }
@@ -816,7 +816,7 @@ yolact_plus_vehicle_config = yolact_plus_base_config.copy({
     'name': 'yolact_plus_vehicle_config',
 
     'dataset': vehicle_dataset,
-    'num_classes': len(vehicle_dataset.class_names) + 1  # Must be at least 2 as background also counts
+    'num_classes': len(vehicle_dataset.class_names) + 1,  # Must be at least 2 as background also counts
 })
 
 # Default config
