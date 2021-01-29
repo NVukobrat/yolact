@@ -56,10 +56,10 @@ def postprocess(det_output, w, h, batch_idx=0, interpolation_mode='bilinear',
     masks   = dets['mask']
 
     # Fix. Reference: https://github.com/dbolya/yolact/issues/453#issuecomment-640056067
-    boxes = torch.cat((boxes[classes == 0]), dim=0)
-    scores = torch.cat((scores[classes == 0]), dim=0)
-    masks = torch.cat((masks[classes == 0]), dim=0)
-    classes = torch.cat((classes[classes == 0]), dim=0)
+    # boxes = torch.cat((boxes[classes == 0]), dim=0)
+    # scores = torch.cat((scores[classes == 0]), dim=0)
+    # masks = torch.cat((masks[classes == 0]), dim=0)
+    # classes = torch.cat((classes[classes == 0]), dim=0)
 
     if cfg.mask_type == mask_type.lincomb and cfg.eval_mask_branch:
         # At this points masks is only the coefficients
