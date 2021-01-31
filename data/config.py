@@ -172,9 +172,18 @@ pascal_sbd_dataset = dataset_base.copy({
     'class_names': PASCAL_CLASSES,
 })
 
+vehicle_dataset_v1 = dataset_base.copy({
+    'name': 'Vehicle Dataset V1',
 
+    'train_info': './output/annotations/training.json',
+    'train_images': './output/images/training/',
 
+    'valid_info': './output/annotations/evaluation.json',
+    'valid_images': './output/images/evaluation/',
 
+    'class_names': ('vehicle'),
+    'label_map': { 1: 1 }
+})
 
 # ----------------------- TRANSFORMS ----------------------- #
 
@@ -200,10 +209,6 @@ darknet_transform = Config({
     'subtract_means': False,
     'to_float': True,
 })
-
-
-
-
 
 # ----------------------- BACKBONES ----------------------- #
 
@@ -765,6 +770,16 @@ yolact_resnet50_pascal_config = yolact_resnet50_config.copy({
         'pred_scales': [[32], [64], [128], [256], [512]],
         'use_square_anchors': False,
     })
+})
+
+yolact_resnet50_vehicle_v1_config = yolact_resnet50_config.copy({
+    'name': 'yolact_resnet50_vehicle_v1_config',
+    # Dataset stuff
+    'dataset': vehicle_dataset_v1,
+    'num_classes': len(vehicle_dataset_v1.class_names) + 1,
+
+    # Image Size
+    'max_size': 512,
 })
 
 # ----------------------- YOLACT++ CONFIGS ----------------------- #
