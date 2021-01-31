@@ -175,11 +175,11 @@ pascal_sbd_dataset = dataset_base.copy({
 vehicle_dataset_v1 = dataset_base.copy({
     'name': 'Vehicle Dataset V1',
 
-    'train_info': './output/annotations/training.json',
-    'train_images': './output/images/training/',
+    'train_info': '~/source/output/annotations/training.json',
+    'train_images': '~/source/output/images/training/',
 
-    'valid_info': './output/annotations/evaluation.json',
-    'valid_images': './output/images/evaluation/',
+    'valid_info': '~/source/output/annotations/evaluation.json',
+    'valid_images': '~/source/output/images/evaluation/',
 
     'class_names': ('vehicle'),
     'label_map': { 1: 1 }
