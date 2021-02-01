@@ -830,6 +830,12 @@ yolact_plus_resnet50_config = yolact_plus_base_config.copy({
     }),
 })
 
+yolact_plus_resnet101_vehicle_v1_config = yolact_plus_base_config.copy({
+    'name': 'yolact_plus_resnet101_vehicle_v1_config',
+    # Dataset stuff
+    'dataset': vehicle_dataset_v1,
+    'num_classes': len(vehicle_dataset_v1.class_names) + 1,
+})
 
 # Default config
 cfg = yolact_base_config.copy()
