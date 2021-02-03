@@ -172,9 +172,18 @@ pascal_sbd_dataset = dataset_base.copy({
     'class_names': PASCAL_CLASSES,
 })
 
+vehicle_dataset_v1 = dataset_base.copy({
+    'name': 'Vehicle Dataset V1',
 
+    'train_info': '/home/ubuntu/source/output/annotations/training.json',
+    'train_images': '/home/ubuntu/source/output/images/training/',
 
+    'valid_info': '/home/ubuntu/source/output/annotations/evaluation.json',
+    'valid_images': '/home/ubuntu/source/output/images/evaluation/',
 
+    'class_names': ('vehicle'),
+    'label_map': { 1: 1 }
+})
 
 # ----------------------- TRANSFORMS ----------------------- #
 
@@ -805,6 +814,12 @@ yolact_plus_resnet50_config = yolact_plus_base_config.copy({
     }),
 })
 
+yolact_plus_resnet101_vehicle_v1_config = yolact_plus_base_config.copy({
+    'name': 'yolact_plus_resnet101_vehicle_v1_config',
+    # Dataset stuff
+    'dataset': vehicle_dataset_v1,
+    'num_classes': len(vehicle_dataset_v1.class_names) + 1,
+})
 
 # Default config
 cfg = yolact_base_config.copy()
