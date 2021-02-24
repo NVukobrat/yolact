@@ -185,6 +185,19 @@ vehicle_dataset_v1 = dataset_base.copy({
     'label_map': { 1: 1 }
 })
 
+vehicle_dataset_v2 = dataset_base.copy({
+    'name': 'Vehicle Dataset V1',
+
+    'train_info': '/home/ubuntu/source/output/annotations/training.json',
+    'train_images': '/home/ubuntu/source/output/images/training/',
+
+    'valid_info': '/home/ubuntu/source/output/annotations/evaluation.json',
+    'valid_images': '/home/ubuntu/source/output/images/evaluation/',
+
+    'class_names': ('car'),
+    'label_map': { 1: 1 }
+})
+
 # ----------------------- TRANSFORMS ----------------------- #
 
 resnet_transform = Config({
@@ -785,8 +798,8 @@ yolact_resnet50_vehicle_v1_config = yolact_resnet50_config.copy({
 yolact_resnet101_vehicle_v1_config = yolact_im700_config.copy({
     'name': 'yolact_resnet101_vehicle_v1_config',
     # Dataset stuff
-    'dataset': vehicle_dataset_v1,
-    'num_classes': len(vehicle_dataset_v1.class_names) + 1,
+    'dataset': vehicle_dataset_v2,
+    'num_classes': len(vehicle_dataset_v2.class_names) + 1,
 
     # Image size
     'max_size': 700,
