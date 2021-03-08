@@ -789,6 +789,16 @@ yolact_resnet50_pascal_config = yolact_resnet50_config.copy({
     })
 })
 
+yolact_resnet101_vehicle_v1_config = yolact_im700_config.copy({
+    'name': 'yolact_resnet101_vehicle_v1_config',
+    # Dataset stuff
+    'dataset': vehicle_dataset_v2,
+    'num_classes': len(vehicle_dataset_v2.class_names) + 1,
+
+    # Image size
+    'max_size': 700,
+})
+
 # ----------------------- YOLACT++ CONFIGS ----------------------- #
 
 yolact_plus_base_config = yolact_base_config.copy({
