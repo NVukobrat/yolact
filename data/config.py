@@ -172,9 +172,31 @@ pascal_sbd_dataset = dataset_base.copy({
     'class_names': PASCAL_CLASSES,
 })
 
+vehicle_dataset_v1 = dataset_base.copy({
+    'name': 'Vehicle Dataset V1',
 
+    'train_info': '/home/ubuntu/source/output/annotations/training.json',
+    'train_images': '/home/ubuntu/source/output/images/training/',
 
+    'valid_info': '/home/ubuntu/source/output/annotations/evaluation.json',
+    'valid_images': '/home/ubuntu/source/output/images/evaluation/',
 
+    'class_names': ('vehicle'),
+    'label_map': { 1: 1 }
+})
+
+vehicle_dataset_v2 = dataset_base.copy({
+    'name': 'Vehicle Dataset V1',
+
+    'train_info': '/home/ubuntu/source/output/annotations/training.json',
+    'train_images': '/home/ubuntu/source/output/images/training/',
+
+    'valid_info': '/home/ubuntu/source/output/annotations/evaluation.json',
+    'valid_images': '/home/ubuntu/source/output/images/evaluation/',
+
+    'class_names': ('car'),
+    'label_map': { 1: 1 }
+})
 
 # ----------------------- TRANSFORMS ----------------------- #
 
