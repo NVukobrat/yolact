@@ -198,6 +198,19 @@ vehicle_dataset_v2 = dataset_base.copy({
     'label_map': { 1: 1 }
 })
 
+all_labels_dataset_v2 = dataset_base.copy({
+    'name': 'All Labels Dataset',
+
+    'train_info': '/home/ubuntu/source/output/annotations/training.json',
+    'train_images': '/home/ubuntu/source/output/images/training/',
+
+    'valid_info': '/home/ubuntu/source/output/annotations/evaluation.json',
+    'valid_images': '/home/ubuntu/source/output/images/evaluation/',
+
+    'class_names': ('window-background', 'wheel', 'plate', 'floor', 'background', 'lights', 'windows', 'side-left', 'back-left', 'back', 'front', 'front-left', 'front-right', 'side-right', 'back-right'),
+    'label_map': { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8: 8, 9: 9, 10: 10, 11: 11, 12: 12, 13: 13, 14: 14, 15: 15 }
+})
+
 # ----------------------- TRANSFORMS ----------------------- #
 
 resnet_transform = Config({
