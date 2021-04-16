@@ -850,6 +850,16 @@ yolact_plus_resnet50_config = yolact_plus_base_config.copy({
     }),
 })
 
+yolact_resnet101_all_labels_config = yolact_im700_config.copy({
+    'name': 'yolact_resnet101_all_labels_config',
+    # Dataset stuff
+    'dataset': all_labels_dataset_v2,
+    'num_classes': len(all_labels_dataset_v2.class_names) + 1,
+
+    # Image size
+    'max_size': 700,
+})
+
 
 # Default config
 cfg = yolact_base_config.copy()
